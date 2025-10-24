@@ -1,15 +1,12 @@
+import java.util.Scanner;
 public class CalculatePostfix {
 
     Tokenizer tokenizer = new Tokenizer();
-    Queue<Object> queue;
+    Queue<Object> queue=new Queue<>();
     Stack stack = new Stack();
 
-    public CalculatePostfix(String expression) {
+    public Double postfixToResult(String expression){
         queue=tokenizer.readTokens(expression);
-        postfixToResult(queue);
-
-    }
-    public Double postfixToResult(Queue<Object>queue){
         Double finalresult=0.0;
         while(!queue.isEmpty()){
             if(queue.peek() instanceof Double) {
