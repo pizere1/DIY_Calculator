@@ -1,4 +1,3 @@
-import java.util.Scanner;
 public class CalculatePostfix {
 
     Tokenizer tokenizer = new Tokenizer();
@@ -57,11 +56,5 @@ public class CalculatePostfix {
             result=null;
         }
         return result;
-    }
-    public static void main(String[] args) {
-        Scanner input = new Scanner(System.in);
-        System.out.println("Enter expression");
-        String expression = input.nextLine();
-        CalculatePostfix calc = new CalculatePostfix(expression);
     }
 }
