@@ -2,12 +2,16 @@ import java.util.Scanner;
 public class CalculatePostfix {
 
     Tokenizer tokenizer = new Tokenizer();
-    Queue<Object> queue= new Queue<>();
+    Queue<Object> queue;
     Stack stack = new Stack();
 
     public CalculatePostfix(String expression) {
         queue=tokenizer.readTokens(expression);
-        Double finalresult=0.03;
+        postfixToResult(queue);
+
+    }
+    public Double postfixToResult(Queue<Object>queue){
+        Double finalresult=0.0;
         while(!queue.isEmpty()){
             if(queue.peek() instanceof Double) {
                 stack.push((Double)(queue.remove()));
@@ -21,7 +25,7 @@ public class CalculatePostfix {
                         operands[i]=(Double)stack.pop();
                     }
                 }
-                Double result=postfixToResult((Double)operands[1],(Double)operands[0],(Character)operator);
+                Double result=postfixToResult1((Double)operands[1],(Double)operands[0],(Character)operator);
                 stack.push((result));
             }
         }
@@ -31,9 +35,10 @@ public class CalculatePostfix {
                 throw new IllegalArgumentException();
             }
         }
-        System.out.println(finalresult);
+       System.out.println(finalresult);
+        return(finalresult);
     }
-    public Double postfixToResult(Double a,Double b, Character operator) {
+    public Double postfixToResult1(Double a,Double b, Character operator) {
         Double result;
         if (operator == '+') {
             result = a + b;
